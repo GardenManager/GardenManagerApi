@@ -1,0 +1,26 @@
+{
+  "name": "GardenManager/GardenManager-Api",
+  "description": "Unified backend API for the GardenManager project",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Zoltan Borsos",
+      "email": "zolli07@gmail.com",
+      "homepage": "https://zolli.hu",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=8.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "GardenManager\\Api\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "GardenManager\\Api\\Tests\\": "tests/"
+    }
+  }
+}
