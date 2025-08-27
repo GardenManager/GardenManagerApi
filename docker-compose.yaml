@@ -1,0 +1,34 @@
+services:
+  nginx:
+    build:
+      context: '.'
+      dockerfile: './.docker/nginx/Dockerfile'
+    depends_on:
+      - 'php'
+    ports:
+      - '80:80'
+
+  php:
+    build:
+      context: '.'
+      dockerfile: './.docker/php/Dockerfile'
+      target: 'dev'
+    volumes:
+      - './:/app'
+      - '${HOME}/.composer:/tmp/.composer'
+      - './.docker/php/conf/php.ini:/usr/local/etc/php/conf.d/php.ini'
+      - './.docker/php/conf/ext-xdebug.ini:/usr/local/etc/php/conf.d/ext-xdebug.ini'
+    depends_on:
+      - 'db'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    environment:
+      - PHP_IDE_CONFIG=serverName=api-gardenmanager
+
+  db:
+    image: 'percona:8'
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "gardenmanager-api"
+    ports:
+      - '3306:3306'
