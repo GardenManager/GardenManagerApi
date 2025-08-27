@@ -15,7 +15,8 @@
     "slim/slim": "^4.0",
     "nyholm/psr7": "^1.8",
     "nyholm/psr7-server": "^1.1",
-    "php-di/php-di": "^7.0"
+    "php-di/php-di": "^7.0",
+    "symfony/dotenv": "^7.0"
   },
   "autoload": {
     "psr-4": {

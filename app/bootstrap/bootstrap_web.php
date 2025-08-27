@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 use Psr\Container\ContainerInterface;
 
+require_once ROOT_PATH . '/app/bootstrap/env.php';
 $container = require_once ROOT_PATH . '/app/bootstrap/container.php';
 
 $app = \Slim\Factory\AppFactory::createFromContainer($container);
