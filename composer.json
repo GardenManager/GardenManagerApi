@@ -1,5 +1,5 @@
 {
-  "name": "GardenManager/GardenManager-Api",
+  "name": "gardenmanager/gardenmanager-api",
   "description": "Unified backend API for the GardenManager project",
   "license": "GPL-3.0-or-later",
   "authors": [
@@ -11,7 +11,8 @@
     }
   ],
   "require": {
-    "php": ">=8.4"
+    "php": ">=8.4",
+    "slim/slim": "^4.0"
   },
   "autoload": {
     "psr-4": {
