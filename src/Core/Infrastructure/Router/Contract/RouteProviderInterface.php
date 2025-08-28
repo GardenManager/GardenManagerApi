@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GardenManager\Api\Infrastructure\Core\Http\Contract;
+namespace GardenManager\Api\Core\Infrastructure\Router\Contract;
 
 use Slim\Interfaces\RouteCollectorProxyInterface;
 

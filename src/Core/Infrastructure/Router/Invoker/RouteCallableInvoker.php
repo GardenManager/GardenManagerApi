@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GardenManager\Api\Infrastructure\Core\Http\InvocationStrategy;
+namespace GardenManager\Api\Core\Infrastructure\Router\Invoker;
 
 use Invoker\InvokerInterface;
 use Psr\Http\Message\ResponseInterface;

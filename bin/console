@@ -2,11 +2,7 @@
 
 declare(strict_types=1);
 
-use Slim\App;
-
 require dirname(__DIR__) . '/app/bootstrap/init.php';
-
-/** @var App $app */
-$app = require ROOT_PATH . '/app/bootstrap/bootstrap_web.php';
+$app = require ROOT_PATH . '/app/bootstrap/bootstrap_cli.php';
 
 $app->run();

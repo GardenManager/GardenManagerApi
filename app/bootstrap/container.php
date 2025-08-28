@@ -3,19 +3,22 @@
 declare(strict_types=1);
 
 use DI\ContainerBuilder;
-use GardenManager\Api\Infrastructure\Core\Container\Contract\ServiceProviderInterface;
+use GardenManager\Api\Core\Infrastructure\Container\Definition\DefinitionResolver;
+use Psr\Container\ContainerInterface;
 
-$builder = new ContainerBuilder()
-    ->useAttributes(true)
-    ->useAutowiring(true);
+return function(string $providerFile, array $config): ContainerInterface {
+    $builder = new ContainerBuilder()
+        ->useAttributes(false)
+        ->useAutowiring(true);
 
-$providers = require_once ROOT_PATH . '/app/providers.php';
+    $builder->addDefinitions(new DefinitionResolver($providerFile)->loadDefinitions());
+    $builder->addDefinitions($config);
 
-foreach ($providers as $provider) {
-    /** @var ServiceProviderInterface $providerObject */
-    $providerObject = new $provider();
+    $isDebug = $_ENV['APP_DEBUG'] === 'true';
 
-    $builder->addDefinitions($providerObject->provide());
-}
+    if (!$isDebug) {
+        $builder->enableCompilation(ROOT_PATH . '/var/cache/container');
+    }
 
-return $builder->build();
+    return $builder->build();
+};

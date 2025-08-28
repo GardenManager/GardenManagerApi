@@ -6,4 +6,4 @@ $rootPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '../..');
 
 define('ROOT_PATH', $rootPath);
 
-require_once ROOT_PATH . '/vendor/autoload.php';
+require ROOT_PATH . '/vendor/autoload.php';

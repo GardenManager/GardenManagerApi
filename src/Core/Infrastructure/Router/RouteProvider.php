@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace GardenManager\Api\Infrastructure\Core\Http;
+namespace GardenManager\Api\Core\Infrastructure\Router;
 
 use DirectoryIterator;
-use GardenManager\Api\Infrastructure\Core\Http\Contract\RouteProviderInterface;
+use GardenManager\Api\Core\Infrastructure\Router\Contract\RouteProviderInterface;
+use GardenManager\Api\Infrastructure\Core\Http\RouteProviderException;
 use Slim\Interfaces\RouteCollectorProxyInterface;
 
 class RouteProvider
@@ -49,7 +50,7 @@ class RouteProvider
     private function tryLoad(string $routeFile, RouteCollectorProxyInterface $routeCollector): void
     {
         /** @var RouteProviderInterface $providerObject */
-        $providerObject = require_once $routeFile;
+        $providerObject = require $routeFile;
 
         if (!$providerObject instanceof RouteProviderInterface) {
             throw RouteProviderException::becauseInvalidProvider($routeFile);

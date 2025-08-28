@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-use GardenManager\Api\Infrastructure\Core\Http\Contract\RouteProviderInterface;
+namespace GardenManager\Api\Core\Infrastructure\Router\Exception;
+
+use GardenManager\Api\Core\Domain\Exception\Contract\FrameworkException;
+use GardenManager\Api\Core\Infrastructure\Router\Contract\RouteProviderInterface;
 
 class RouteProviderException extends FrameworkException
 {

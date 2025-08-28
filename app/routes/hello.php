@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use GardenManager\Api\Infrastructure\Core\Http\Contract\RouteProviderInterface;
+use GardenManager\Api\Core\Infrastructure\Router\Contract\RouteProviderInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Interfaces\RouteCollectorProxyInterface;
