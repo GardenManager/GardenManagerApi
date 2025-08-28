@@ -21,5 +21,18 @@ return new class implements RouteProviderInterface {
                 return $response;
             }
         );
+
+        $collector->get(
+            '/hello/{word}',
+            function (
+                ServerRequestInterface $request,
+                ResponseInterface $response,
+                string $word,
+            ): ResponseInterface {
+                $response->getBody()->write('Hello, ' . $word . '!' );
+
+                return $response;
+            }
+        );
     }
 };

@@ -6,12 +6,12 @@ declare(strict_types=1);
 
 use GardenManager\Api\Infrastructure\Core\Http\RouteProvider;
 use Psr\Container\ContainerInterface;
-use Slim\Factory\AppFactory;
+use Slim\App;
 
 require_once ROOT_PATH . '/app/bootstrap/env.php';
 $container = require_once ROOT_PATH . '/app/bootstrap/container.php';
 
-$app = AppFactory::createFromContainer($container);
+$app = $container->get(App::class);
 
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
