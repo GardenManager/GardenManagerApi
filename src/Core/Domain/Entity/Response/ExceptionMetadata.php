@@ -7,7 +7,7 @@ namespace GardenManager\Api\Core\Domain\Entity\Response;
 use GardenManager\Api\Core\Infrastructure\Response\Contract\ResponseMetadataInterface;
 use \Throwable;
 
-class ExceptionTraceMetadata implements ResponseMetadataInterface
+class ExceptionMetadata implements ResponseMetadataInterface
 {
     public function __construct(private readonly Throwable $exception)
     {

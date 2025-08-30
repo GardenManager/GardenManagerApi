@@ -28,7 +28,7 @@ class JsonResponseErrorRenderer extends AbstractErrorRenderer
                 ->setData($exception->getMessage())
                 ->setException($exception)
                 ->addMetadata(
-                    $this->responseMetadataFactory->createExceptionTraceMetadata($exception, $displayErrorDetails)
+                    $this->responseMetadataFactory->createExceptionMetadata($exception, $displayErrorDetails)
                 )
                 ->buildEntity(),
             JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR

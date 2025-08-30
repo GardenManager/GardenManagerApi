@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GardenManager\Api\Core\Infrastructure\Response\Factory;
 
-use GardenManager\Api\Core\Domain\Entity\Response\ExceptionTraceMetadata;
+use GardenManager\Api\Core\Domain\Entity\Response\ExceptionMetadata;
 use GardenManager\Api\Core\Domain\Entity\Response\RequestDataResponseMetadata;
 use GardenManager\Api\Core\Infrastructure\Response\Contract\ResponseMetadataInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -24,8 +24,8 @@ class ResponseMetadataFactory
         return new RequestDataResponseMetadata($this->request);
     }
 
-    public function createExceptionTraceMetadata(Throwable $exception): ExceptionTraceMetadata
+    public function createExceptionMetadata(Throwable $exception): ExceptionMetadata
     {
-        return new ExceptionTraceMetadata($exception);
+        return new ExceptionMetadata($exception);
     }
 }
