@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use GardenManager\Api\App\TestAction;
 use GardenManager\Api\Core\Infrastructure\Router\Contract\RouteProviderInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,5 +35,7 @@ return new class implements RouteProviderInterface {
                 return $response;
             }
         );
+
+        $collector->get('/action', TestAction::class);
     }
 };

@@ -24,7 +24,7 @@ class DefinitionResolverException extends FrameworkException
             sprintf(
                 'Service %s provider classes must implement %s',
                 $providerClass,
-                ServiceProviderInterface::class::class,
+                ServiceProviderInterface::class,
             ),
             [
                 'class' => $providerClass,
