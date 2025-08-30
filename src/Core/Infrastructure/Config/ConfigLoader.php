@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace GardenManager\Api\Core\Infrastructure\Config;
 
-class ConfigLoader
+readonly class ConfigLoader
 {
     public function __construct(
-        private readonly ConfigLocationResolver $locationResolver,
+        private ConfigLocationResolver $locationResolver,
     )
     {
     }
@@ -17,7 +17,7 @@ class ConfigLoader
      */
     public function resolveConfiguration(): array
     {
-        $files = $this->locationResolver->resolveByEnvironment();
+        $files          = $this->locationResolver->resolveByEnvironment();
         $configurations = [];
 
         foreach ($files as $file) {

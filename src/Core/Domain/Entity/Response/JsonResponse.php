@@ -6,18 +6,17 @@ namespace GardenManager\Api\Core\Domain\Entity\Response;
 
 use GardenManager\Api\Core\Domain\Entity\Response\Collection\ResponseMetadataCollection;
 use GardenManager\Api\Core\Domain\Entity\Response\Enum\ResponseStatusEnum;
-use GardenManager\Api\Core\Infrastructure\Container\Exception\DefinitionResolverException;
 use GardenManager\Api\Core\Infrastructure\Response\Contract\ResponseMetadataInterface;
 use JsonSerializable;
 use Psr\Http\Message\ResponseInterface;
 
-class JsonResponse implements JsonSerializable
+readonly class JsonResponse implements JsonSerializable
 {
     public function __construct(
-        private readonly mixed $data,
-        private readonly ResponseStatusEnum $status,
-        private readonly int $statusCode,
-        private readonly ?ResponseMetadataCollection $metadataCollection,
+        private mixed $data,
+        private ResponseStatusEnum $status,
+        private int $statusCode,
+        private ?ResponseMetadataCollection $metadataCollection,
     )
     {
     }
@@ -26,7 +25,7 @@ class JsonResponse implements JsonSerializable
     {
         $response = [
             'status' => $this->status->value,
-            'data' => $this->data,
+            'data'   => $this->data,
         ];
 
         if ($this->metadataCollection !== null && !$this->metadataCollection->isEmpty()) {

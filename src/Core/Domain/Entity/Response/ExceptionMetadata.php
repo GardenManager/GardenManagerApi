@@ -15,7 +15,7 @@ class ExceptionMetadata implements ResponseMetadataInterface
 
     public function getName(): string
     {
-        return 'trace';
+        return 'exception';
     }
 
     public function jsonSerialize(): array

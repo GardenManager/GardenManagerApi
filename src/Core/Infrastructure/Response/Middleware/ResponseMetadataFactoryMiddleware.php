@@ -23,7 +23,7 @@ class ResponseMetadataFactoryMiddleware implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $this->responseMetadataFactory->setRequest($request);
+        $this->responseMetadataFactory->request = $request;
 
         return $handler->handle($request);
     }

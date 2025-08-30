@@ -7,10 +7,10 @@ namespace GardenManager\Api\Core\Infrastructure\Container\Definition;
 use GardenManager\Api\Core\Infrastructure\Container\Contract\ServiceProviderInterface;
 use GardenManager\Api\Core\Infrastructure\Container\Exception\DefinitionResolverException;
 
-class DefinitionResolver
+readonly class DefinitionResolver
 {
     public function __construct(
-        private readonly string $providerFile
+        private string $providerFile
     )
     {
     }

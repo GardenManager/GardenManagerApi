@@ -6,17 +6,15 @@ namespace GardenManager\Api\Core\Infrastructure\Response\Factory;
 
 use GardenManager\Api\Core\Domain\Entity\Response\ExceptionMetadata;
 use GardenManager\Api\Core\Domain\Entity\Response\RequestDataResponseMetadata;
-use GardenManager\Api\Core\Infrastructure\Response\Contract\ResponseMetadataInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use \Throwable;
 
 class ResponseMetadataFactory
 {
-    private ServerRequestInterface $request;
-
-    public function setRequest(ServerRequestInterface $request): void
-    {
-        $this->request = $request;
+    public ServerRequestInterface $request {
+        set(ServerRequestInterface $value) {
+            $this->request = $value;
+        }
     }
 
     public function createRequestDataMetadata(): RequestDataResponseMetadata

@@ -3,8 +3,9 @@
 declare(strict_types=1);
 
 namespace GardenManager\Api\Core\Infrastructure\Config;
+use \DirectoryIterator;
 
-class ConfigLocationResolver
+readonly class ConfigLocationResolver
 {
     /**
      * @param array<int, string> $additionalConfigFileMap Additional files that used to generate
@@ -18,9 +19,9 @@ class ConfigLocationResolver
      * </pre>
      */
     public function __construct(
-        private readonly string $configPath,
-        private readonly string $environment,
-        private readonly array $additionalConfigFileMap = []
+        private string $configPath,
+        private string $environment,
+        private array $additionalConfigFileMap = []
     )
     {
     }
@@ -50,7 +51,7 @@ class ConfigLocationResolver
      */
     private function listFilesInDirectory(string $directory): array
     {
-        $directoryIterator = new \DirectoryIterator($directory);
+        $directoryIterator = new DirectoryIterator($directory);
         $configFiles       = [];
 
         foreach ($directoryIterator as $file) {
