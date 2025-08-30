@@ -20,7 +20,8 @@
     "symfony/console": "^7.0",
     "doctrine/dbal": "^4",
     "doctrine/migrations": "^3",
-    "ramsey/collection": "^2"
+    "ramsey/collection": "^2",
+    "monolog/monolog": "^3"
   },
   "autoload": {
     "psr-4": {

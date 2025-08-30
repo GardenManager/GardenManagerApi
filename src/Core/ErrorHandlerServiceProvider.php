@@ -7,6 +7,7 @@ namespace GardenManager\Api\Core;
 use GardenManager\Api\Core\Infrastructure\Container\Contract\ServiceProviderInterface;
 use GardenManager\Api\Core\Infrastructure\ErrorHandler\Renderer\JsonResponseErrorRenderer;
 use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
 use Slim\App;
 use Slim\Middleware\ErrorMiddleware;
 
@@ -24,6 +25,7 @@ class ErrorHandlerServiceProvider implements ServiceProviderInterface
                     $container->get('config.error_handler.display_error_details'),
                     $container->get('config.error_handler.log_errors'),
                     $container->get('config.error_handler.log_error_details'),
+                    $container->get(LoggerInterface::class),
                 );
 
                 $errorMiddleware->getDefaultErrorHandler()->registerErrorRenderer('application/json', JsonResponseErrorRenderer::class);
