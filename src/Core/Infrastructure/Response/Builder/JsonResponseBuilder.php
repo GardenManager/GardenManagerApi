@@ -90,7 +90,7 @@ class JsonResponseBuilder
         return ResponseStatusEnum::SUCCESS;
     }
 
-    private function determineStatusCode()
+    private function determineStatusCode(): int
     {
         if ($this->statusCode !== null) {
             return $this->statusCode;
