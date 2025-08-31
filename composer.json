@@ -21,7 +21,9 @@
     "doctrine/dbal": "^4",
     "doctrine/migrations": "^3",
     "ramsey/collection": "^2",
-    "monolog/monolog": "^3"
+    "monolog/monolog": "^3",
+    "doctrine/orm": "^3.5",
+    "symfony/cache": "^7"
   },
   "autoload": {
     "psr-4": {
@@ -32,5 +34,8 @@
     "psr-4": {
       "GardenManager\\Api\\Tests\\": "tests/"
     }
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^2.1"
   }
 }
