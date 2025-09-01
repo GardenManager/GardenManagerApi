@@ -8,6 +8,7 @@ use GardenManager\Api\Core\Domain\Entity\Response\Collection\ResponseMetadataCol
 use GardenManager\Api\Core\Domain\Entity\Response\Enum\ResponseStatusEnum;
 use GardenManager\Api\Core\Domain\Entity\Response\JsonResponse;
 use GardenManager\Api\Core\Infrastructure\Response\Contract\ResponseMetadataInterface;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use \Throwable;
 
@@ -22,7 +23,8 @@ class JsonResponseBuilder
     private ?Throwable $exception = null;
 
     public function __construct(
-        private readonly ResponseMetadataCollection $metadataCollection
+        private readonly ResponseMetadataCollection $metadataCollection,
+        private readonly ResponseFactoryInterface $responseFactory,
     )
     {
     }
@@ -62,9 +64,15 @@ class JsonResponseBuilder
         return $this;
     }
 
-    public function build(ResponseInterface $response): ResponseInterface
+    public function build(): ResponseInterface
     {
-        return $this->buildEntity()->toResponse($response);
+        return $this
+            ->buildEntity()
+            ->toResponse(
+                $this
+                    ->responseFactory
+                    ->createResponse()
+            );
     }
 
     public function buildEntity(): JsonResponse

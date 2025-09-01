@@ -23,7 +23,8 @@
     "ramsey/collection": "^2",
     "monolog/monolog": "^3",
     "doctrine/orm": "^3.5",
-    "symfony/cache": "^7"
+    "symfony/cache": "^7",
+    "symfony/event-dispatcher": "^7"
   },
   "autoload": {
     "psr-4": {

@@ -10,6 +10,7 @@ use GardenManager\Api\Core\Infrastructure\Response\Builder\JsonResponseBuilder;
 use GardenManager\Api\Core\Infrastructure\Response\Contract\ResponseMetadataInterface;
 use GardenManager\Api\Core\Infrastructure\Response\Factory\ResponseMetadataFactory;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseFactoryInterface;
 
 class ResponseBuilderServiceProvider implements ServiceProviderInterface
 {
@@ -24,7 +25,8 @@ class ResponseBuilderServiceProvider implements ServiceProviderInterface
                 $metadataFactory = $container->get(ResponseMetadataFactory::class);
 
                 $builder = new JsonResponseBuilder(
-                    new ResponseMetadataCollection(ResponseMetadataInterface::class, [])
+                    new ResponseMetadataCollection(ResponseMetadataInterface::class, []),
+                    $container->get(ResponseFactoryInterface::class),
                 );
 
                 $builder->addMetadata($metadataFactory->createRequestDataMetadata());

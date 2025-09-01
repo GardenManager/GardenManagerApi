@@ -26,6 +26,6 @@ class OrmTestAction extends ActionAbstract
     {
         $entity = $this->entityManager->find(Test::class, 1);
 
-        return $this->responseBuilder->setData($entity)->build($response);
+        return $this->responseBuilder->setData($entity)->build();
     }
 }

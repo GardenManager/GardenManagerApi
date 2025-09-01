@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace GardenManager\Api\Core;
 
+use GardenManager\Api\Core\Infrastructure\App\EventDispatchingApp;
+use GardenManager\Api\Core\Infrastructure\App\EventDispatchingAppFactory;
 use GardenManager\Api\Core\Infrastructure\Container\Contract\ServiceProviderInterface;
 use GardenManager\Api\Core\Infrastructure\Router\Invoker\RouteCallableInvoker;
 use Invoker\Invoker;
@@ -16,9 +18,9 @@ use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\App;
-use Slim\Factory\AppFactory;
 use Slim\Interfaces\InvocationStrategyInterface;
 use function DI\autowire;
+use function DI\get;
 
 class HttpApplicationServiceProvider implements ServiceProviderInterface
 {
@@ -40,8 +42,8 @@ class HttpApplicationServiceProvider implements ServiceProviderInterface
                 return new RouteCallableInvoker($invoker);
             },
 
-            App::class => function(ContainerInterface $container): App {
-                $app = AppFactory::createFromContainer($container);
+            EventDispatchingApp::class => function(ContainerInterface $container): EventDispatchingApp {
+                $app = EventDispatchingAppFactory::createFromContainer($container);
 
                 $app
                     ->getRouteCollector()
@@ -51,6 +53,8 @@ class HttpApplicationServiceProvider implements ServiceProviderInterface
 
                 return $app;
             },
+
+            App::class => get(EventDispatchingApp::class),
         ];
     }
 }

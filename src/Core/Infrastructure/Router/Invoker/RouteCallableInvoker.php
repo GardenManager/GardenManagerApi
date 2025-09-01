@@ -24,15 +24,14 @@ class RouteCallableInvoker implements InvocationStrategyInterface
         array $routeArguments
     ): ResponseInterface
     {
-        $parameters = [
-            'request' => $this->injectRouteArguments($request, $routeArguments),
+        $parameters              = [
+            'request'  => $this->injectRouteArguments($request, $routeArguments),
             'response' => $response,
         ];
-
-        $parameters['args'] = $routeArguments;
+        $parameters['args']      = $routeArguments;
         $parameters['arguments'] = $routeArguments;
-        $parameters += $routeArguments;
-        $parameters += $request->getAttributes();
+        $parameters              += $routeArguments;
+        $parameters              += $request->getAttributes();
 
         return $this->invoker->call($callable, $parameters);
     }
