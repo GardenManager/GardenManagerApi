@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use GardenManager\Api\Core\DatabaseServiceProvider;
-use GardenManager\Api\Core\ErrorHandlerServiceProvider;
-use GardenManager\Api\Core\EventDispatcherServiceProvider;
-use GardenManager\Api\Core\HttpApplicationServiceProvider;
-use GardenManager\Api\Core\LoggerServiceProvider;
-use GardenManager\Api\Core\OrmServiceProvider;
-use GardenManager\Api\Core\ResponseBuilderServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\DatabaseServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\ErrorHandlerServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\EventDispatcherServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\HttpApplicationServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\LoggerServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\OrmServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\ResponseBuilderServiceProvider;
 
 return [
     EventDispatcherServiceProvider::class,

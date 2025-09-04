@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GardenManager\Api\Core\Infrastructure\Container\Exception;
+namespace GardenManager\Api\Core\Infrastructure\DependencyInjection\Exception;
 
 use GardenManager\Api\Core\Domain\Exception\Contract\FrameworkException;
-use GardenManager\Api\Core\Infrastructure\Container\Contract\ServiceProviderInterface;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\Contract\ServiceProviderInterface;
 
 class DefinitionResolverException extends FrameworkException
 {

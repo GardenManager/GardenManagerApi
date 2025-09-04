@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GardenManager\Api\Core\Infrastructure\Container\Contract;
+namespace GardenManager\Api\Core\Infrastructure\DependencyInjection\Contract;
 
 interface ServiceProviderInterface
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use GardenManager\Api\Core\CliApplicationServiceProvider;
-use GardenManager\Api\Core\DatabaseServiceProvider;
-use GardenManager\Api\Core\EventDispatcherServiceProvider;
-use GardenManager\Api\Core\LoggerServiceProvider;
-use GardenManager\Api\Core\MigrationsServiceProvider;
-use GardenManager\Api\Core\OrmServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\CliApplicationServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\DatabaseServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\EventDispatcherServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\LoggerServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\MigrationsServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\OrmServiceProvider;
 
 return [
     EventDispatcherServiceProvider::class,

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace GardenManager\Api\App;
 
 use GardenManager\Api\Core\Infrastructure\Action\ActionAbstract;
-use GardenManager\Api\Core\Infrastructure\Container\Exception\DefinitionResolverException;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\Exception\DefinitionResolverException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 

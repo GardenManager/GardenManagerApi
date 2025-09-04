@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use DI\ContainerBuilder;
-use GardenManager\Api\Core\Infrastructure\Container\Definition\DefinitionResolver;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\Definition\DefinitionResolver;
 use Psr\Container\ContainerInterface;
 
 return function(string $providerFile, array $config): ContainerInterface {

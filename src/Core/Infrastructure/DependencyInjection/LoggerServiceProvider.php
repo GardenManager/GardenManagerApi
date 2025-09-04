@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GardenManager\Api\Core;
+namespace GardenManager\Api\Core\Infrastructure\DependencyInjection;
 
-use GardenManager\Api\Core\Infrastructure\Container\Contract\ServiceProviderInterface;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\Contract\ServiceProviderInterface;
 use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;

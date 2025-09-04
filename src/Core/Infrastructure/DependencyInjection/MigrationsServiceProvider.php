@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GardenManager\Api\Core;
+namespace GardenManager\Api\Core\Infrastructure\DependencyInjection;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\Migrations\Configuration\Connection\ExistingConnection;
@@ -22,7 +22,7 @@ use Doctrine\Migrations\Tools\Console\Command\SyncMetadataCommand;
 use Doctrine\Migrations\Tools\Console\Command\UpToDateCommand;
 use Doctrine\Migrations\Tools\Console\Command\VersionCommand;
 use Doctrine\ORM\EntityManager;
-use GardenManager\Api\Core\Infrastructure\Container\Contract\ServiceProviderInterface;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\Contract\ServiceProviderInterface;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Command\ListCommand;
 

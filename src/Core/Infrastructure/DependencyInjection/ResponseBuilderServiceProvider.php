@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GardenManager\Api\Core;
+namespace GardenManager\Api\Core\Infrastructure\DependencyInjection;
 
 use GardenManager\Api\Core\Domain\Entity\Response\Collection\ResponseMetadataCollection;
-use GardenManager\Api\Core\Infrastructure\Container\Contract\ServiceProviderInterface;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\Contract\ServiceProviderInterface;
 use GardenManager\Api\Core\Infrastructure\Response\Builder\JsonResponseBuilder;
 use GardenManager\Api\Core\Infrastructure\Response\Contract\ResponseMetadataInterface;
 use GardenManager\Api\Core\Infrastructure\Response\Factory\ResponseMetadataFactory;

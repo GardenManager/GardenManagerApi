@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace GardenManager\Api\Core;
+namespace GardenManager\Api\Core\Infrastructure\DependencyInjection;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Tools\DsnParser;
-use GardenManager\Api\Core\Infrastructure\Container\Contract\ServiceProviderInterface;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\Contract\ServiceProviderInterface;
 use Psr\Container\ContainerInterface;
 
 class DatabaseServiceProvider implements ServiceProviderInterface

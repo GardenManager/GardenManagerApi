@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GardenManager\Api\Core\Infrastructure\Container\Definition;
+namespace GardenManager\Api\Core\Infrastructure\DependencyInjection\Definition;
 
-use GardenManager\Api\Core\Infrastructure\Container\Contract\ServiceProviderInterface;
-use GardenManager\Api\Core\Infrastructure\Container\Exception\DefinitionResolverException;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\Contract\ServiceProviderInterface;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\Exception\DefinitionResolverException;
 
 readonly class DefinitionResolver
 {
