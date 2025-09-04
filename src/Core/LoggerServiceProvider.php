@@ -8,6 +8,7 @@ use GardenManager\Api\Core\Infrastructure\Container\Contract\ServiceProviderInte
 use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use Monolog\Processor\PsrLogMessageProcessor;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
@@ -21,6 +22,9 @@ class LoggerServiceProvider implements ServiceProviderInterface
                     'default',
                     [
                         new StreamHandler('php://stdout')->setFormatter(new JsonFormatter())
+                    ],
+                    [
+                        new PsrLogMessageProcessor()
                     ]
                 );
             },

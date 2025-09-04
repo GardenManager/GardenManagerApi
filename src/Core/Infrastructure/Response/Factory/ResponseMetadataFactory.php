@@ -22,8 +22,8 @@ class ResponseMetadataFactory
         return new RequestDataResponseMetadata($this->request);
     }
 
-    public function createExceptionMetadata(Throwable $exception): ExceptionMetadata
+    public function createExceptionMetadata(Throwable $exception, bool $displayErrorDetails): ExceptionMetadata
     {
-        return new ExceptionMetadata($exception);
+        return new ExceptionMetadata($exception, $displayErrorDetails);
     }
 }

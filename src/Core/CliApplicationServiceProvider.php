@@ -8,6 +8,7 @@ use GardenManager\Api\Core\Infrastructure\Container\Contract\ServiceProviderInte
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use function DI\autowire;
 
 class CliApplicationServiceProvider implements ServiceProviderInterface
@@ -24,6 +25,7 @@ class CliApplicationServiceProvider implements ServiceProviderInterface
                     $container->get('config.cli.application_version')
                 );
 
+                $application->setDispatcher($container->get(EventDispatcherInterface::class));
                 $application->setCommandLoader($container->get(ContainerCommandLoader::class));
 
                 return $application;

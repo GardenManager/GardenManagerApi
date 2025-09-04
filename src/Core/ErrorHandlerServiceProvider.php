@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace GardenManager\Api\Core;
 
 use GardenManager\Api\Core\Infrastructure\Container\Contract\ServiceProviderInterface;
+use GardenManager\Api\Core\Infrastructure\ErrorHandler\Renderer\JsonErrorLogRenderer;
 use GardenManager\Api\Core\Infrastructure\ErrorHandler\Renderer\JsonResponseErrorRenderer;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Slim\App;
+use Slim\Handlers\ErrorHandler;
 use Slim\Middleware\ErrorMiddleware;
 
 class ErrorHandlerServiceProvider implements ServiceProviderInterface
@@ -28,8 +30,11 @@ class ErrorHandlerServiceProvider implements ServiceProviderInterface
                     $container->get(LoggerInterface::class),
                 );
 
-                $errorMiddleware->getDefaultErrorHandler()->registerErrorRenderer('application/json', JsonResponseErrorRenderer::class);
-                $errorMiddleware->getDefaultErrorHandler()->forceContentType('application/json');
+                /** @var ErrorHandler $errorHandler */
+                $errorHandler = $errorMiddleware->getDefaultErrorHandler();
+
+                $errorHandler->registerErrorRenderer('application/json', JsonResponseErrorRenderer::class);
+                $errorHandler->setLogErrorRenderer(JsonErrorLogRenderer::class);
 
                 return $errorMiddleware;
             },

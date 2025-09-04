@@ -29,7 +29,7 @@ class HttpApplicationServiceProvider implements ServiceProviderInterface
         return [
             ResponseFactoryInterface::class => autowire(Psr17Factory::class),
 
-            InvocationStrategyInterface::class . '.php-di' => function(ContainerInterface $container): InvocationStrategyInterface {
+            InvocationStrategyInterface::class . '.php-di' => static function(ContainerInterface $container): InvocationStrategyInterface {
                 $resolvers = [
                     new AssociativeArrayResolver(),
                     new TypeHintContainerResolver($container),
@@ -42,7 +42,7 @@ class HttpApplicationServiceProvider implements ServiceProviderInterface
                 return new RouteCallableInvoker($invoker);
             },
 
-            EventDispatchingApp::class => function(ContainerInterface $container): EventDispatchingApp {
+            EventDispatchingApp::class => static function(ContainerInterface $container): EventDispatchingApp {
                 $app = EventDispatchingAppFactory::createFromContainer($container);
 
                 $app

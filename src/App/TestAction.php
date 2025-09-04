@@ -13,7 +13,7 @@ class TestAction extends ActionAbstract
 {
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        //throw DefinitionResolverException::becauseInvalidProvider('test::class');
+        throw DefinitionResolverException::becauseInvalidProvider('test::class');
 
         return $this->responseBuilder->setData(['a' => 'b'])->build();
     }

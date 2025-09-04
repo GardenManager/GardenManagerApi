@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace GardenManager\Api\Core\Domain\Exception\Contract;
 
 use Exception;
-use GardenManager\Api\Core\Exception\Contract\Throwable;
+use \Throwable;
 
 class FrameworkException extends Exception
 {

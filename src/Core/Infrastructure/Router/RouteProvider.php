@@ -6,7 +6,7 @@ namespace GardenManager\Api\Core\Infrastructure\Router;
 
 use DirectoryIterator;
 use GardenManager\Api\Core\Infrastructure\Router\Contract\RouteProviderInterface;
-use GardenManager\Api\Infrastructure\Core\Http\RouteProviderException;
+use GardenManager\Api\Core\Infrastructure\Router\Exception\RouteProviderException;
 use Slim\Interfaces\RouteCollectorProxyInterface;
 
 class RouteProvider

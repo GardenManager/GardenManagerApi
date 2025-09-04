@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace GardenManager\Api\Core\Domain\Entity\Response;
 
+use GardenManager\Api\Core\Domain\Exception\Contract\FrameworkException;
 use GardenManager\Api\Core\Infrastructure\Response\Contract\ResponseMetadataInterface;
 use \Throwable;
 
 class ExceptionMetadata implements ResponseMetadataInterface
 {
-    public function __construct(private readonly Throwable $exception)
+    public function __construct(
+        private readonly Throwable $exception,
+        private readonly bool $displayErrorDetails,
+    )
     {
     }
 
@@ -31,17 +35,25 @@ class ExceptionMetadata implements ResponseMetadataInterface
     }
 
     /**
-     * @return array<string, string|int>
+     * @return array<string, int|list<array<string, array<mixed>|int|object|string>>|string>
      */
     private function formatException(Throwable $exception): array
     {
-        return [
+        $formattedException = [
             'type'    => get_class($exception),
             'code'    => $exception->getCode(),
-            'message' => $exception->getMessage(),
             'file'    => $exception->getFile(),
             'line'    => $exception->getLine(),
-            'trace'   => $exception->getTrace(),
         ];
+
+        if ($exception instanceof FrameworkException) {
+            $formattedException['context'] = $exception->getContext();
+        }
+
+        if ($this->displayErrorDetails) {
+            $formattedException['trace'] = $exception->getTrace();
+        }
+
+        return $formattedException;
     }
 }
