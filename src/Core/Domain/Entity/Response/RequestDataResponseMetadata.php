@@ -23,6 +23,8 @@ class RequestDataResponseMetadata implements ResponseMetadataInterface
 
     public function jsonSerialize(): array
     {
+        $this->request->getBody()->rewind();
+
         return [
             'body'          => $this->request->getParsedBody(),
             'query'         => $this->request->getQueryParams(),

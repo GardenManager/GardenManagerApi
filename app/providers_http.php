@@ -7,8 +7,11 @@ use GardenManager\Api\Core\Infrastructure\DependencyInjection\ErrorHandlerServic
 use GardenManager\Api\Core\Infrastructure\DependencyInjection\EventDispatcherServiceProvider;
 use GardenManager\Api\Core\Infrastructure\DependencyInjection\HttpApplicationServiceProvider;
 use GardenManager\Api\Core\Infrastructure\DependencyInjection\LoggerServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\MessengerServiceProvider;
 use GardenManager\Api\Core\Infrastructure\DependencyInjection\OrmServiceProvider;
 use GardenManager\Api\Core\Infrastructure\DependencyInjection\ResponseBuilderServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\SerializerServiceProvider;
+use GardenManager\Api\Core\Infrastructure\DependencyInjection\ValidatorServiceProvider;
 
 return [
     EventDispatcherServiceProvider::class,
@@ -16,6 +19,9 @@ return [
     LoggerServiceProvider::class,
     ResponseBuilderServiceProvider::class,
     ErrorHandlerServiceProvider::class,
+    SerializerServiceProvider::class,
+    ValidatorServiceProvider::class,
+    MessengerServiceProvider::class,
     DatabaseServiceProvider::class,
     OrmServiceProvider::class,
 ];

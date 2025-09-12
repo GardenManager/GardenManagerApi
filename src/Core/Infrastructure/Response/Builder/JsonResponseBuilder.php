@@ -6,11 +6,11 @@ namespace GardenManager\Api\Core\Infrastructure\Response\Builder;
 
 use GardenManager\Api\Core\Domain\Entity\Response\Collection\ResponseMetadataCollection;
 use GardenManager\Api\Core\Domain\Entity\Response\Enum\ResponseStatusEnum;
+use GardenManager\Api\Core\Domain\Entity\Response\ExceptionMetadata;
 use GardenManager\Api\Core\Domain\Entity\Response\JsonResponse;
 use GardenManager\Api\Core\Infrastructure\Response\Contract\ResponseMetadataInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
-use \Throwable;
 
 class JsonResponseBuilder
 {
@@ -19,8 +19,6 @@ class JsonResponseBuilder
     private ?ResponseStatusEnum $status = null;
 
     private ?int $statusCode = null;
-
-    private ?Throwable $exception = null;
 
     public function __construct(
         private readonly ResponseMetadataCollection $metadataCollection,
@@ -46,13 +44,6 @@ class JsonResponseBuilder
     public function setStatusCode(int $statusCode): JsonResponseBuilder
     {
         $this->statusCode = $statusCode;
-
-        return $this;
-    }
-
-    public function setException(Throwable $exception): JsonResponseBuilder
-    {
-        $this->exception = $exception;
 
         return $this;
     }
@@ -91,7 +82,7 @@ class JsonResponseBuilder
             return $this->status;
         }
 
-        if ($this->exception !== null) {
+        if ($this->hasExceptionMetadata($this->metadataCollection)) {
             return ResponseStatusEnum::ERROR;
         }
 
@@ -116,10 +107,19 @@ class JsonResponseBuilder
             return 400;
         }
 
-        if ($this->exception !== null) {
+        if ($this->hasExceptionMetadata($this->metadataCollection)) {
             return 500;
         }
 
         return 200;
+    }
+
+    private function hasExceptionMetadata(ResponseMetadataCollection $metadataCollection): bool
+    {
+        return $metadataCollection
+                ->filter(
+                    fn(ResponseMetadataInterface $item) => $item instanceof ExceptionMetadata
+                )
+                ->count() > 0;
     }
 }

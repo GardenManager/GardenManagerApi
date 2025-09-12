@@ -26,12 +26,11 @@ class JsonResponseErrorRenderer extends AbstractErrorRenderer
                 ->responseBuilder
                 ->setStatus(ResponseStatusEnum::ERROR)
                 ->setData($exception->getMessage())
-                ->setException($exception)
                 ->addMetadata(
                     $this->responseMetadataFactory->createExceptionMetadata($exception, $displayErrorDetails)
                 )
                 ->buildEntity(),
-            JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR
+            JSON_THROW_ON_ERROR
         );
     }
 }
